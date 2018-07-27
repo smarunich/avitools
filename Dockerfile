@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
 ARG tf_version="0.11.7"
+ARG avi_release_version="18.1.2"
 
 RUN echo $HOME
 
