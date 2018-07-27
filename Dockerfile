@@ -5,7 +5,7 @@ ARG avi_release_version="18.1.2"
 RUN echo $HOME
 
 RUN apt-get update
-RUN apt-get install -y git python python-dev python-pip python-virtualenv python-cffi libssl-dev libffi-dev make wget vim unzip golang-1.9-go sshpass curl slowhttptest nc dnsutils iptuils-ping httpie apache2-utils
+RUN apt-get install -y git python python-dev python-pip python-virtualenv python-cffi libssl-dev libffi-dev make wget vim unzip golang-1.9-go sshpass curl slowhttptest netcat dnsutils iptuils-ping httpie apache2-utils
 RUN git config --global http.sslverify false
 
 RUN pip install -U ansible==2.5.2
