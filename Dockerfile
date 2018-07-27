@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 ARG tf_version="0.11.7"
 ARG avi_release_version="17.2.12"
