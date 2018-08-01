@@ -25,5 +25,5 @@
         AVI_SDK_VERSION=18.1.3
     fi
 
-    docker build -t smarunich/avitools:$AVI_VERSION --build-arg avi_sdk_version=$AVI_SDK_VERSION --build-arg avi_version=$AVI_VERSION .
+    docker build --build-arg avi_sdk_version=$AVI_SDK_VERSION --build-arg avi_version=$AVI_VERSION .
 }
