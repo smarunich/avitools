@@ -17,6 +17,7 @@
 # permission is obtained from Avi Networks Incorporated.
 ###
 echo "=> Building the binary"
+echo $CACHE_TAG
 if [ $CACHE_TAG ]; then
     AVI_VERSION=$CACHE_TAG
     AVI_SDK_VERSION=$CACHE_TAG
