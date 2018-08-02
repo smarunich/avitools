@@ -2,8 +2,9 @@ FROM avinetworks/avitools-base:bionic
 
 ARG tf_version="0.11.7"
 ARG avi_sdk_version
-RUN echo $HOME
+ARG avi_version
 
+RUN echo $HOME
 
 RUN apt-get update
 RUN apt-get install -y git python python-dev python-pip python-virtualenv python-cffi libssl-dev libffi-dev make wget vim unzip golang-1.9-go sshpass curl slowhttptest netcat dnsutils httpie apache2-utils
@@ -14,12 +15,10 @@ RUN pip install pyvmomi pytest==3.2.5 pyyaml==3.12 requests==2.18.4 pyparsing==2
 
 RUN pip install avisdk==${avi_sdk_version} avimigrationtools==${avi_sdk_version}
 RUN ansible-galaxy -c install avinetworks.avisdk avinetworks.avicontroller avinetworks.avise avinetworks.aviconfig avinetworks.avicontroller-openshift-k8s avinetworks.avise-csp avinetworks.avicontroller-csp locationlabs.openstack-lbaasv2-avi avinetworks.avicontroller-azure avinetworks.avicontroller-vmware
-
 RUN curl https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip -o terraform_${tf_version}_linux_amd64.zip
 RUN unzip terraform_${tf_version}_linux_amd64.zip -d /usr/local/bin
-
 RUN mkdir -p $HOME/src/github.com/avinetworks/
-RUN cd $HOME/src/github.com/avinetworks/ && git clone https://github.com/avinetworks/sdk.git
+RUN cd $HOME/src/github.com/avinetworks/ && git clone https://github.com/avinetworks/sdk.git && cd sdk && git checkout $avi_version
 
 RUN echo "export ANSIBLE_LIBRARY=$HOME/.ansible/roles/avinetworks.avisdk/library" >> /etc/bash.bashrc
 RUN echo "export PYTHONPATH=$HOME/src/github.com/avinetworks/sdk/python/" >> /etc/bash.bashrc
