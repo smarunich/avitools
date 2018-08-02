@@ -1,7 +1,9 @@
 FROM avinetworks/avitools-base:bionic
 
 ARG tf_version="0.11.7"
+ARG avi_sdk_version
 RUN echo $HOME
+
 
 RUN apt-get update
 RUN apt-get install -y git python python-dev python-pip python-virtualenv python-cffi libssl-dev libffi-dev make wget vim unzip golang-1.9-go sshpass curl slowhttptest netcat dnsutils httpie apache2-utils
