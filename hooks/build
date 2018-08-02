@@ -18,6 +18,7 @@
 ###
 echo "=> Building the binary"
 echo $CACHE_TAG
+echo $IMAGE_NAME
 if [ $CACHE_TAG ]; then
     AVI_VERSION=$CACHE_TAG
     AVI_SDK_VERSION=$CACHE_TAG
@@ -28,5 +29,5 @@ fi
 
 docker build \
         --build-arg "avi_sdk_version=$AVI_SDK_VERSION" \
-        --build-arg "avi_version=$AVI_VERSION" .
+        --build-arg "avi_version=$AVI_VERSION" \
         -t $IMAGE_NAME .
